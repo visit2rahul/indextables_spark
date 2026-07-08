@@ -1322,10 +1322,9 @@ object FiltersToQueryConverter {
     }
 
   /**
-   * Reject wildcard and range patterns on exact_only fields before the native layer is called.
-   * exact_only stores values as U64 hashes so only exact match is meaningful -- wildcard and range
-   * queries produce meaningless results or cryptic JNI errors after exhausting task retries.
-   * Best-effort: checks for common patterns (* ? and [ TO ]).
+   * Reject wildcard and range patterns on exact_only fields before the native layer is called. exact_only stores values
+   * as U64 hashes so only exact match is meaningful -- wildcard and range queries produce meaningless results or
+   * cryptic JNI errors after exhausting task retries. Best-effort: checks for common patterns (* ? and [ TO ]).
    */
   private def validateIndexQueryOnExactOnlyField(
     columnName: String,
